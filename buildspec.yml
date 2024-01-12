@@ -7,8 +7,7 @@ phases:
       - aws --version
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 028282433975.dkr.ecr.ap-south-1.amazonaws.com
       - REPOSITORY_URI=028282433975.dkr.ecr.ap-south-1.amazonaws.com/aws-ecs-ecr-demo
-      - IMAGE_TAG=${COMMIT_HASH:=latest}
-
+      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
       - echo Build started on `date
