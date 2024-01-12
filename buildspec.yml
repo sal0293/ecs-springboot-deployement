@@ -10,7 +10,7 @@ phases:
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
-      - echo Build started on `date
+      - echo Build started on date
       - echo Building the jar file
       - mvn clean install
       - echo building the Docker Image 
